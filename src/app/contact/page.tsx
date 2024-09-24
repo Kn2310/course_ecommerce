@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main className="flex w-full min-h-screen flex-col items-center p-1">
       <div className="flex flex-col w-full items-center gap-3 text-lg text-teal-700">
-        <h1>Admin</h1>
+        <h1>Contact</h1>
       </div>
     </main>
   );

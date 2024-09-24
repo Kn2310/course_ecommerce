@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Product } from "@/lib/shopify/types";
 import Catalog from "@/components/catalog/Catalog";
+import axios from "axios";
 
-export default function Home() {
+export default function CatalogPage() {
   const [products, setProducts] = useState<Product[]>([]);
 
   function addProduct() {
@@ -25,15 +26,16 @@ export default function Home() {
   }
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
-      .then((response) => response.json())
-      .then((data) => setProducts(data));
+    axios
+      .get(`http://localhost:5000/api/products/`)
+      .then((response) => setProducts(response.data))
+      .catch((error) => console.log(error));
   }, []);
 
   return (
     <main className="flex w-full min-h-screen flex-col items-center p-2">
       <div className="flex flex-row w-full items-center gap-3 text-lg">
-        HOME
+        <Catalog products={products} addProduct={addProduct} />
       </div>
     </main>
   );

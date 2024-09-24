@@ -9,6 +9,7 @@ import {
 import { Product } from "@/lib/shopify/types";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 interface Props {
   product: Product;
@@ -37,7 +38,7 @@ export default function ProductCard(product: Props) {
           Add to card
         </Button>
         <Button className="bg-transparent dark:bg-neutral-100 dark:hover:bg-neutral-100 shadow-none border-2 border-neutral-200 hover:bg-slate-100 hover:border-slate-100 text-neutral-900">
-          View
+          <Link href={`/catalog/${product.product.id}`}>View</Link>
         </Button>
       </CardFooter>
     </Card>
